@@ -1,3 +1,5 @@
+package fds.manuel;
+
 import java.time.LocalDate;
 
 public interface Codificador {
