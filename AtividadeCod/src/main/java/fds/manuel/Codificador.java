@@ -1,14 +1,12 @@
 package fds.manuel;
 
-import java.time.LocalDate;
-
 public interface Codificador {
     // Retorna o nome do codificador
     
     public String getNome();
 
     // Retorna a data de imlementação do codificador (pode ser usado como versao)
-    public LocalDate getDataCriacao();
+    //public LocalDate getDataCriacao();
 
     // Retorna o nivel de segurança do codificador (1 = muito baixo, 100 = muito alto)
     public int getNivelSeguranca();

@@ -3,35 +3,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Factory {
-    private static List<Codificador> listadeCodificadores = new ArrayList<>();
-    //static(
-        //listadeCodificadores.add(new CodificadorMorse);
-        //listadeCodificadores.add(new CodificadorVigenere);
-    //    )
 
-    private static Codificador getCodificadores(int nivelDesejado){
-        if(listadeCodificadores.isEmpty()){
-            throw new IllegalStateException("Nenhum Codificador registrad");
+    private static List<Codificador> listadeCodificadores = new ArrayList<>();
+    
+    static{
+        listadeCodificadores.add(new CodificadorCesar());
+        listadeCodificadores.add(new CodificadorSimples());
+      
+    }  
+
+    /**
+     * Função base para devolver o nível do coidificador
+     * @param Nivel_desejado_do_parametro
+     * @return Melhor_opcap_de_Codificador
+     */
+    public static String getCodificadores(int nivelDesejado){
+        if (listadeCodificadores.isEmpty()) {
+            throw new IllegalStateException("Nenhum codificador foi registrado na factory.");
         }
 
-        Codificador melhorOp = null;
+        // 3. Lógica para encontrar o codificador mais próximo.
+        Codificador melhorOpcao = null;
         int menorDiferenca = Integer.MAX_VALUE;
 
-        for(Codificador codifica : listadeCodificadores){
-            int diferencaAtual = Math.abs(codifica.getNivelSeguranca() - nivelDesejado);
+        for (Codificador codificador : listadeCodificadores) {
+            int diferencaAtual = Math.abs(codificador.getNivelSeguranca() - nivelDesejado);
 
-            if(diferencaAtual < menorDiferenca){
+            // Se a diferença atual for menor, este é o novo melhor candidato.
+            if (diferencaAtual < menorDiferenca) {
                 menorDiferenca = diferencaAtual;
-                melhorOp = codifica;
+                melhorOpcao = codificador;
             }
-            else if(diferencaAtual == menorDiferenca){
-                if(melhorOp != null && codifica.getNivelSeguranca() > melhorOp.getNivelSeguranca()){
-                    melhorOp = codifica;
+            // Critério de desempate: se a diferença for a mesma, prefere o de maior segurança.
+            else if (diferencaAtual == menorDiferenca) {
+                if (melhorOpcao != null && codificador.getNivelSeguranca() > melhorOpcao.getNivelSeguranca()) {
+                    melhorOpcao = codificador;
                 }
             }
         }
-
-        return melhorOp;
-
+        return melhorOpcao.getNome();
     }
 }
