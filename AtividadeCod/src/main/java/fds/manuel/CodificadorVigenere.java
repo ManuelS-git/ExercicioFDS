@@ -1,7 +1,5 @@
 package fds.manuel;
 
-import java.time.LocalDate;
-
 /**
  * Implementação da cifra de Vigenère
  * Essa implementacao ignora, mantendo caracteres nao alfabeticos 
@@ -21,13 +19,13 @@ import java.time.LocalDate;
 public class CodificadorVigenere implements Codificador {
 
     //Chave para criptografar e descriptografar
-    private final String chave;
+    private String chave;
 
     /**
      * @param chave chave para a criacao da codificacao e da decodificacao.
      **/
-    public CodificadorVigenere(String chave) {
-        this.chave = chave.toUpperCase();
+    public CodificadorVigenere() {
+        this.chave = "CHAVE_DEFAULT";
     }
 
     @Override
@@ -35,10 +33,10 @@ public class CodificadorVigenere implements Codificador {
         return "Codificador Vigenere";
     }
 
-    @Override
-    public LocalDate getDataCriacao() {
-        return LocalDate.of(2025, 8, 18);
-    }
+    // @Override
+    // public LocalDate getDataCriacao() {
+    //     return LocalDate.of(2025, 8, 18);
+    // }
 
     @Override
     public int getNivelSeguranca() {

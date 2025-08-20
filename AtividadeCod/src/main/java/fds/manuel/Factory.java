@@ -1,4 +1,5 @@
 package fds.manuel;
+import java.nio.charset.CodingErrorAction;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,9 @@ public class Factory {
     static{
         listadeCodificadores.add(new CodificadorCesar());
         listadeCodificadores.add(new CodificadorSimples());
-      
+        listadeCodificadores.add(new CodeMorse());
+        listadeCodificadores.add(new CodificadorVigenere());
+
     }  
 
     /**
