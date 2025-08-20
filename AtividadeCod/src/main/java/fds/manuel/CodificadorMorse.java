@@ -1,6 +1,6 @@
 package fds.manuel;
 
-public class CodeMorse implements Codificador{
+public class CodificadorMorse implements Codificador{
     
     // A classe não precisa mais de variáveis de estado (como 'private String text')
     // nem de um construtor que receba o texto.
@@ -11,7 +11,6 @@ public class CodeMorse implements Codificador{
     }
 
     /**
-     * Implementação do método que estava faltando na sua classe.
      * O Código Morse é para transmissão, não segurança. Por isso, nível 1.
      */
     @Override
